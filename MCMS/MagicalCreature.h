@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface MagicalCreature : NSObject
-@property (readonly) NSString *name;
+@property NSString *name;
+@property NSString *countryOfOrigin;
 
 -(instancetype) initWithName:(NSString *) aName;
 -(void) modifyName: (NSString *) aName;

@@ -14,6 +14,7 @@
 @property NSMutableArray *creatures;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *addCreatureTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addNumberOfLimbsTextField;
 @end
 
 @implementation ViewController
@@ -26,12 +27,17 @@
     MagicalCreature *creature3 = [[MagicalCreature alloc] initWithName:@"Ronya"];
     MagicalCreature *creature4 = [[MagicalCreature alloc] initWithName:@"Fonya"];
 
+    creature1.countryOfOrigin = @"UK";
+    creature2.countryOfOrigin = @"Denmark";
+    creature3.countryOfOrigin = @"Sweden";
+    creature4.countryOfOrigin = @"USA";
+
+
     self.creatures = [NSMutableArray arrayWithObjects:creature1,
                                                         creature2,
                                                             creature3,
                                                                 creature4,
                                                                         nil];
-
 
 
 }
@@ -46,6 +52,7 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyCellID" forIndexPath:indexPath ];
     MagicalCreature *creature = [self.creatures objectAtIndex:indexPath.row];
     cell.textLabel.text = creature.name;
+    cell.detailTextLabel.text = creature.countryOfOrigin;
     return cell;
 }
 
@@ -54,8 +61,11 @@
     if(self.addCreatureTextField.text.length > 0)
         {
             MagicalCreature *creature = [[MagicalCreature alloc] initWithName: self.addCreatureTextField.text];
+            creature.countryOfOrigin = self.addNumberOfLimbsTextField.text; //Label should be named countryOfOriginTextField
+
             [self.creatures insertObject:creature atIndex:0]; //Added to beginning of the collection. 
             self.addCreatureTextField.text = @"";
+            self.addNumberOfLimbsTextField.text = @"";
             [self.addCreatureTextField resignFirstResponder];
             [self.tableView reloadData];
         }
@@ -68,6 +78,9 @@
     NSIndexPath *iP = [self.tableView indexPathForSelectedRow];
     MagicalCreature *creature = [self.creatures objectAtIndex:iP.row];
 
+    creatureViewController.magicalCreature =creature;
+
+
     if([segue.identifier isEqualToString:@"ShowCreatureSegue"])
         {
             NSLog(@"%@", creature.name);
@@ -76,9 +89,9 @@
         }
 }
 
--(IBAction) unwindFromVacationViewController:(UIStoryboardSegue *) segue{
+-(IBAction) unwindFromCreatureViewController:(UIStoryboardSegue *) segue{
 
-    NSLog(@"Back");
+            [self.tableView reloadData];
 }
 
 @end

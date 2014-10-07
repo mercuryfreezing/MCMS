@@ -9,7 +9,7 @@
 #import "MagicalCreature.h"
 
 @interface MagicalCreature()
-@property (readwrite) NSString *name;
+
 
 @end
 

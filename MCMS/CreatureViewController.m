@@ -12,54 +12,61 @@
 @interface CreatureViewController () <UITextFieldDelegate>
 @property (readwrite) NSMutableArray *creaturesP;
 @property (weak, nonatomic) IBOutlet UITextField *editEnterCreatureNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *editCountryTextField;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameToShowLabel;
+@property (readwrite) MagicalCreature *aMagicalCreature;
+@property (weak, nonatomic) IBOutlet UILabel *countryToShowLabel;
+
 
 @end
 
 @implementation CreatureViewController
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
-    self.creaturesP = self.creatures;
+
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+
+    self.aMagicalCreature = self.magicalCreature;
+    self.creaturesP = self.creatures;//Is this required? for persistance?
+
+    //Hide the editing fields by default
     self.editEnterCreatureNameTextField.hidden = YES;
+    self.editCountryTextField.hidden = YES;
+
+    NSLog(@"%@", self.aMagicalCreature.name);
+    self.nameToShowLabel.text = self.aMagicalCreature.name;
+    self.countryToShowLabel.text = self.aMagicalCreature.countryOfOrigin;
+
 
 }
 
 
-- (IBAction)editButtonPressed:(UIButton *)sender {
-
-    [self.editEnterCreatureNameTextField becomeFirstResponder];
-    if(self.editEnterCreatureNameTextField.editing)
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate
+{
+    [super setEditing:editing animated:animate];
+    if(editing)
     {
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        NSLog(@"%@", sender.titleLabel.text);
         self.editEnterCreatureNameTextField.hidden = NO;
-
+        self.editCountryTextField.hidden = NO;
     }
     else
     {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        [self.editEnterCreatureNameTextField resignFirstResponder];
+        self.aMagicalCreature.name = self.editEnterCreatureNameTextField.text;
+        self.aMagicalCreature.countryOfOrigin = self.editCountryTextField.text;
+        self.nameToShowLabel.text = self.aMagicalCreature.name;
+        self.countryToShowLabel.text = self.aMagicalCreature.countryOfOrigin;
+        self.navigationItem.title = self.aMagicalCreature.name;
+        self.editEnterCreatureNameTextField.hidden = YES;
+        self.editCountryTextField.hidden = YES;
+
     }
-    
+
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
 
-    NSString *originalTitle = self.title;
-    self.title = textField.text;
-
-    for(MagicalCreature *eachCreature in self.creaturesP)
-
-    {
-        NSString *name = eachCreature.name;
-        if([name isEqualToString:originalTitle])
-        {
-            [eachCreature modifyName:textField.text];
-            NSLog(@"%@", eachCreature.name);
-        }
-    }
-    return YES;
-}
 
 
 
