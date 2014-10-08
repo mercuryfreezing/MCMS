@@ -12,11 +12,12 @@
 @interface CreatureViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 //@property (readwrite) NSMutableArray *creaturesP;
+@property (readwrite) MagicalCreature *aMagicalCreature;
+
 @property (weak, nonatomic) IBOutlet UITextField *editEnterCreatureNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *editCountryTextField;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameToShowLabel;
-@property (readwrite) MagicalCreature *aMagicalCreature;
 @property (weak, nonatomic) IBOutlet UILabel *countryToShowLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageToShowView;
 
@@ -46,7 +47,6 @@
 
 
 }
-
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
@@ -78,7 +78,10 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccessoriesCell" forIndexPath:indexPath];
 
-    cell.textLabel.text = [self.aMagicalCreature.accessories objectAtIndex:indexPath.row];
+    //This is returning all the values in the array into a single cell. Need to use a loop to get it on different cells?
+
+    NSString *accessory = [self.aMagicalCreature.accessories objectAtIndex:indexPath.row];
+    cell.textLabel.text = accessory;
 
     return cell;
 }

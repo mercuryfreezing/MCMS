@@ -20,6 +20,7 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -105,16 +106,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
 
-
-
-
     if([segue.identifier isEqualToString:@"ShowCreatureSegue"])
         {
             CreatureViewController *creatureViewController = segue.destinationViewController;
             NSIndexPath *iP = [self.tableView indexPathForSelectedRow];
             MagicalCreature *creature = [self.creatures objectAtIndex:iP.row];
 
-            creatureViewController.magicalCreature =creature;
+            creatureViewController.magicalCreature =creature; //Pass the whole creature instead of specific properties
             NSLog(@"%@", creature.name);
             creatureViewController.title = creature.name;
             //creatureViewController.creatures = self.creatures;
@@ -122,21 +120,20 @@
     
     if([segue.identifier isEqualToString:@"toBattleViewControllerSegue"])
     {
-        BattleViewController *battleViewController = segue.destinationViewController;
-        NSIndexPath *iP = [self.tableView indexPathForSelectedRow];
-        MagicalCreature *creature = [self.creatures objectAtIndex:iP.row];
+            BattleViewController *battleViewController = segue.destinationViewController;
+            NSIndexPath *iP = [self.tableView indexPathForSelectedRow];
+            MagicalCreature *creature = [self.creatures objectAtIndex:iP.row];
 
-        battleViewController.magicalCreature =creature;
-        NSLog(@"%@", creature.name);
-//        battleViewController.title = creature.name;
-        //creatureViewController.creatures = self.creatures;
+            battleViewController.magicalCreature =creature;
+            NSLog(@"%@", creature.name);
+    //        battleViewController.title = creature.name;
+            //creatureViewController.creatures = self.creatures;
     }
 
 
 }
 
 -(IBAction) unwindFromCreatureViewController:(UIStoryboardSegue *) segue{
-
 
     [self.tableView reloadData];
 }
