@@ -11,7 +11,7 @@
 
 @interface CreatureViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (readwrite) NSMutableArray *creaturesP;
+//@property (readwrite) NSMutableArray *creaturesP;
 @property (weak, nonatomic) IBOutlet UITextField *editEnterCreatureNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *editCountryTextField;
 
@@ -33,7 +33,7 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     self.aMagicalCreature = self.magicalCreature;
-    self.creaturesP = self.creatures;//Is this required? for persistance?
+   // self.creaturesP = self.creatures;//Is this required? for persistance?
 
     //Hide the editing fields by default
     self.editEnterCreatureNameTextField.hidden = YES;

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MagicalCreature.h"
 #import "CreatureViewController.h"
+#import "BattleViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property NSMutableArray *creatures;
@@ -103,19 +104,35 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
-    CreatureViewController *creatureViewController = segue.destinationViewController;
-    NSIndexPath *iP = [self.tableView indexPathForSelectedRow];
-    MagicalCreature *creature = [self.creatures objectAtIndex:iP.row];
 
-    creatureViewController.magicalCreature =creature;
+
 
 
     if([segue.identifier isEqualToString:@"ShowCreatureSegue"])
         {
+            CreatureViewController *creatureViewController = segue.destinationViewController;
+            NSIndexPath *iP = [self.tableView indexPathForSelectedRow];
+            MagicalCreature *creature = [self.creatures objectAtIndex:iP.row];
+
+            creatureViewController.magicalCreature =creature;
             NSLog(@"%@", creature.name);
             creatureViewController.title = creature.name;
-            creatureViewController.creatures = self.creatures;
+            //creatureViewController.creatures = self.creatures;
         }
+    
+    if([segue.identifier isEqualToString:@"toBattleViewControllerSegue"])
+    {
+        BattleViewController *battleViewController = segue.destinationViewController;
+        NSIndexPath *iP = [self.tableView indexPathForSelectedRow];
+        MagicalCreature *creature = [self.creatures objectAtIndex:iP.row];
+
+        battleViewController.magicalCreature =creature;
+        NSLog(@"%@", creature.name);
+//        battleViewController.title = creature.name;
+        //creatureViewController.creatures = self.creatures;
+    }
+
+
 }
 
 -(IBAction) unwindFromCreatureViewController:(UIStoryboardSegue *) segue{
