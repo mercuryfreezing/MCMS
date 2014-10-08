@@ -101,19 +101,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8o2-XY-Ab9">
-                                <rect key="frame" x="22" y="111" width="562" height="88"/>
+                                <rect key="frame" x="22" y="73" width="562" height="88"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EU9-vU-nJN">
-                                <rect key="frame" x="22" y="274" width="562" height="58"/>
+                                <rect key="frame" x="22" y="175" width="562" height="58"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="34V-Op-DvS">
-                                <rect key="frame" x="16" y="91" width="186" height="30"/>
+                                <rect key="frame" x="16" y="72" width="186" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -121,13 +121,33 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7mg-qx-wGP">
-                                <rect key="frame" x="16" y="249" width="186" height="30"/>
+                                <rect key="frame" x="16" y="137" width="186" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uNK-vs-Jai">
+                                <rect key="frame" x="22" y="241" width="240" height="128"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Qb1-oa-rua">
+                                <rect key="frame" x="22" y="377" width="240" height="147"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccessoriesCell" id="f0O-VX-ESA">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f0O-VX-ESA" id="bww-1U-bVC">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xaj-gd-4HS" id="Ya3-yg-7qg"/>
+                                    <outlet property="delegate" destination="Xaj-gd-4HS" id="gQF-Jg-IDf"/>
+                                </connections>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMj-Zp-Zvt">
-                                <rect key="frame" x="239" y="505" width="70" height="30"/>
-                                <state key="normal" title="Start Over">
+                                <rect key="frame" x="99" y="532" width="73" height="30"/>
+                                <state key="normal" title="Main Page">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -143,6 +163,7 @@
                         <outlet property="countryToShowLabel" destination="EU9-vU-nJN" id="g6h-WW-k8i"/>
                         <outlet property="editCountryTextField" destination="7mg-qx-wGP" id="tcf-Xv-BcB"/>
                         <outlet property="editEnterCreatureNameTextField" destination="34V-Op-DvS" id="Xcy-bJ-6Vb"/>
+                        <outlet property="imageToShowView" destination="uNK-vs-Jai" id="kce-B1-393"/>
                         <outlet property="nameToShowLabel" destination="8o2-XY-Ab9" id="pqt-uf-f1F"/>
                     </connections>
                 </viewController>

@@ -12,7 +12,8 @@
 @interface MagicalCreature : NSObject
 @property NSString *name;
 @property NSString *countryOfOrigin;
-@property UIImageView *image;
+@property UIImage *image;
+@property NSMutableArray *accessories;
 
 
 

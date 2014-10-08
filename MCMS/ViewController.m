@@ -32,6 +32,31 @@
     creature3.countryOfOrigin = @"Sweden";
     creature4.countryOfOrigin = @"USA";
 
+    creature1.image = [UIImage imageNamed:@"Sonya"];
+    creature2.image = [UIImage imageNamed:@"Tanya"];
+    creature3.image = [UIImage imageNamed:@"Ronya"];
+    creature4.image = [UIImage imageNamed:@"Fonya"];
+
+    creature1.accessories = [NSMutableArray arrayWithObjects:
+                                            @"Sword"
+                                            @"Gun"
+                                            @"Grenade", nil];
+
+    creature2.accessories = [NSMutableArray arrayWithObjects:
+                                            @"Tank"
+                                            @"Bazooka"
+                                            @"Knife", nil];
+
+    creature3.accessories = [NSMutableArray arrayWithObjects:
+                                            @"Baton"
+                                            @"Spoon"
+                                            @"Pillow", nil];
+    creature4.accessories = [NSMutableArray arrayWithObjects:
+                                            @"Laptop"
+                                            @"Stun Gun"
+                                            @"Pepper spray", nil];
+
+
 
     self.creatures = [NSMutableArray arrayWithObjects:creature1,
                                                         creature2,
@@ -39,7 +64,8 @@
                                                                 creature4,
                                                                         nil];
 
-    
+
+
 
 
 }
@@ -55,6 +81,7 @@
     MagicalCreature *creature = [self.creatures objectAtIndex:indexPath.row];
     cell.textLabel.text = creature.name;
     cell.detailTextLabel.text = creature.countryOfOrigin;
+    cell.imageView.image = creature.image;
     return cell;
 }
 
