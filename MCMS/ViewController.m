@@ -39,6 +39,8 @@
                                                                 creature4,
                                                                         nil];
 
+    
+
 
 }
 
@@ -91,7 +93,8 @@
 
 -(IBAction) unwindFromCreatureViewController:(UIStoryboardSegue *) segue{
 
-            [self.tableView reloadData];
+
+    [self.tableView reloadData];
 }
 
 @end

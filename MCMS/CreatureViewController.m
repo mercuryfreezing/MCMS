@@ -61,7 +61,6 @@
         self.navigationItem.title = self.aMagicalCreature.name;
         self.editEnterCreatureNameTextField.hidden = YES;
         self.editCountryTextField.hidden = YES;
-
     }
 
 }
